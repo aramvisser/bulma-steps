@@ -4,6 +4,7 @@ $steps-active-color: $primary !default
 $steps-horizontal-min-width: 10em !default
 $steps-vertical-min-height: 4em !default
 $steps-marker-size: 2 !default
+$steps-gap-size: .3rem !default
 
 =steps-horizontal
   +tablet
@@ -113,6 +114,11 @@ $steps-marker-size: 2 !default
       .steps-content
         padding-top: calc(#{$size * $steps-marker-size / 2} - .5em)
 
+    &.has-gaps .steps-segment, .steps-segment.has-gaps
+      &:not(:last-child):after
+        top: ($size * $steps-marker-size) + $steps-gap-size
+        bottom:  $steps-gap-size
+
   +steps-horizontal
     // Draw a horizontal divider
     .steps-segment:not(:last-child):after
@@ -144,6 +150,17 @@ $steps-marker-size: 2 !default
         margin-left: .5em 
         margin-right: .5em
         padding-top: .2em
+
+    &.has-gaps .steps-segment, .steps-segment.has-gaps
+      &:not(:last-child):after
+        left: ($size * $steps-marker-size) + $steps-gap-size
+        right:  $steps-gap-size
+
+    &.has-content-centered
+      &.has-gaps .steps-segment, .steps-segment.has-gaps
+        &:not(:last-child):after
+          left: calc(50% + #{($size * $steps-marker-size / 2) + $steps-gap-size})
+          right: calc(-50% + #{($size * $steps-marker-size / 2) + $steps-gap-size})
 
 .steps
   +steps-size($size-normal)
@@ -189,7 +206,7 @@ $steps-marker-size: 2 !default
       color: $color-invert
 
 
-// Divider alternate styles
+// Divider dashed style
 =steps-divider-background($angle, $color, $size)
   background: repeating-linear-gradient($angle, $color, $color $size, transparent $size, transparent #{$size * 2})
 .steps

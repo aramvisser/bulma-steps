@@ -13,6 +13,8 @@ variables:
   value: 4em
 - name: $steps-marker-size
   value: 2
+- name: $steps-gap-size
+  value: .3rem
 ---
 
 <section class="section">
@@ -515,12 +517,14 @@ variables:
     {{steps_narrow_example}}
     {% endhighlight %}
 
-    {% include heading.html name="Divider Style" %}
+    {% include heading.html name="Divider Styles" %}
 
     <div class="content">
       <p>
-        The divider can be styled using the <code>is-dashed</code> modifier. This can apply to all steps by defining it on the root <code>steps</code> element or for each step separately.
+        The divider can be styled using the <code>is-dashed</code> modifier, <code>has-gaps</code> modifier or both. They can apply to all steps by defining it on the root <code>steps</code> element or each step separately.
       </p>
+
+      <h4 class="title"><code>is-dashed</code></h4>
     </div>
 
     {% capture steps_dashed_example %}
@@ -572,6 +576,60 @@ variables:
         </div>
         {% highlight html %}
         {{steps_dashed_mixed_example}}
+        {% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <h4 class="title"><code>has-gaps</code></h4>
+    </div>
+
+    {% capture steps_gaps_example %}
+    <ul class="steps has-gaps">
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    {% capture steps_gaps_mixed_example %}
+    <ul class="steps">
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active has-gaps">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="columns">
+      <div class="column">
+        <h4 class="title">For all steps</h4>
+        <div class="example">
+          {{steps_gaps_example}}
+        </div>
+        {% highlight html %}
+        {{steps_gaps_example}}
+        {% endhighlight %}
+      </div>
+
+      <div class="column">
+        <h4 class="title">Per step</h4>
+        <div class="example">
+          {{steps_gaps_mixed_example}}
+        </div>
+        {% highlight html %}
+        {{steps_gaps_mixed_example}}
         {% endhighlight %}
       </div>
     </div>
@@ -705,7 +763,7 @@ variables:
           </div>
         </a>
       </li>
-      <li class="steps-segment is-active">
+      <li class="steps-segment is-active has-gaps">
         <span class="steps-marker">
           <span class="icon">
             <i class="fa fa-usd"></i>
