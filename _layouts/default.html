@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ site.fontawesome }}">
+    <link rel="stylesheet" href="documentation.css">
+
+    <title>Steps Component for Bulma.io</title>
+  </head>
+
+  <body>
+    <section class="hero is-primary is-medium">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <h1 class="title">
+                Steps Component For <a href="http://bulma.io">Bulma.io</a>
+              </h1>
+              <h2 class="subtitle">
+                Keep track of where you are in multi steps forms and wizards
+              </h2>
+            </div>
+
+            <div class="column">
+              <div class="example">
+                <ul class="steps is-medium has-content-centered">
+                  <li class="steps-segment is-completed">
+                    <a href="#" class="has-text-dark">
+                      <span class="steps-marker">
+                        <span class="icon">
+                          <i class="fa fa-shopping-cart"></i>
+                        </span>
+                      </span>
+                      <div class="steps-content">
+                        <p class="heading">Shopping Cart</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="steps-segment is-completed">
+                    <a hef=#" class="has-text-dark">
+                      <span class="steps-marker">
+                        <span class="icon">
+                          <i class="fa fa-user"></i>
+                        </span>
+                      </span>
+                      <div class="steps-content">
+                        <p class="heading">User Information</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="steps-segment is-active">
+                    <span class="steps-marker">
+                      <span class="icon">
+                        <i class="fa fa-usd"></i>
+                      </span>
+                    </span>
+                    <div class="steps-content">
+                      <p class="heading">Payment</p>
+                    </div>
+                  </li>
+                  <li class="steps-segment">
+                    <span class="steps-marker">
+                      <span class="icon">
+                        <i class="fa fa-check"></i>
+                      </span>
+                    </span>
+                    <div class="steps-content">
+                      <p class="heading">Confirmation</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{ content }}
+  </body>
+</html>

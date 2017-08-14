@@ -1,0 +1,740 @@
+---
+layout: default
+variables:
+- name: $steps-default-color
+  value: $grey-lighter
+- name: $steps-completed-color
+  value: $primary
+- name: $steps-active-color
+  value: $primary
+- name: $steps-horizontal-min-width
+  value: 10em
+- name: $steps-vertical-min-height
+  value: 4em
+- name: $steps-marker-size
+  value: 2
+---
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Installation</h1>
+    <p>
+      This is an extensions for the <a href="http://bulma.io">Bulma CSS framework</a>. See the <a href="https://github.com/aramvisser/bulma-steps">Readme on Github</a> for installation instructions.
+    </p>
+
+    <hr>
+
+    {%
+      include meta.html
+      colors=true
+      sizes=true
+      variables=true
+    %}
+
+    {% include heading.html name="Documentation" %}
+
+    <div class="content">
+      <p>
+        The <code>steps</code> list is useful for tracking progress in multi steps forms or wizards.
+      </p>
+
+      <p>
+        You can use the <code>is-completed</code> and <code>is-active</code> modifiers on each step to indicate progress.
+      </p>
+    </div>
+
+    {% capture steps_example %}
+    <ul class="steps">
+      <li class="steps-segment is-completed">
+        <a href="#" class="steps-marker"></a>
+      </li>
+      <li class="steps-segment is-completed">
+        <a href="#" class="steps-marker"></a>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_example}}
+    </div>
+    {% highlight html %}
+    {{steps_example}}
+    {% endhighlight %}
+
+    {% include heading.html name="Marker Content" %}
+
+    <div class="content">
+      <p>
+        You can display information inside markers. About 2 or 3 characters or an <code>icon</code> will fit.
+      </p>
+    </div>
+
+    {% capture steps_marker_content_example %}
+    <ul class="steps">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker">1</span>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker">xyz</span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker">-3-</span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">★</span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">
+          <span class="icon">
+            <i class="fa fa-check"></i>
+          </span>
+        </span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_marker_content_example}}
+    </div>
+    {% highlight html %}
+    {{steps_marker_content_example}}
+    {% endhighlight %}
+
+    {% include heading.html name="Step Content" %}
+
+    <div class="content">
+      <p>
+        Use the <code>steps-content</code> class to add content to a <code>steps-segment</code>.
+      </p>
+
+      <p>
+        If the last step also has content, use the <code>is-balanced</code> modifier on the root <code>steps</code> element, to make sure that the last step has the same width as the other steps.
+      </p>
+    </div>
+
+    {% capture steps_content_example %}
+    <ul class="steps is-balanced">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 1</p>
+          <p>This is the first step, which means you start here.</p>
+        </div>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 2</p>
+          <p>This is the second step. Once you complete the first step, you will end up here.</p>
+        </div>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 3</p>
+          <p>This is the third step. This is halfway between the start and the end.</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 4</p>
+          <p>The fourth step. Nearly there!</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 5</p>
+          <p>And finally the last step. You have successfully completed all 5 steps.</p>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_content_example}}
+    </div>
+    {% highlight html %}
+    {{steps_content_example}}
+    {% endhighlight %}
+
+    <div class="content">
+      <p>
+        Use the <code>has-content-centered</code> class to align the content directly underneath the marker.
+      </p>
+
+      <p>
+        You can omit the <code>is-balanced</code> modifier, since <code>has-content-centered</code> will make sure the steps are always balanced.
+      </p>
+    </div>
+
+    {% capture steps_centered_content_example %}
+    <ul class="steps has-content-centered">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 1</p>
+          <p>This is the first step, which means you start here.</p>
+        </div>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 2</p>
+          <p>This is the second step. Once you complete the first step, you will end up here.</p>
+        </div>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 3</p>
+          <p>This is the third step. This is halfway between the start and the end.</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 4</p>
+          <p>The fourth step. Nearly there!</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">Step 5</p>
+          <p>And finally the last step. You have successfully completed all 5 steps.</p>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_centered_content_example}}
+    </div>
+    {% highlight html %}
+    {{steps_centered_content_example}}
+    {% endhighlight %}
+
+    <div class="content">
+      <p>
+        Use the <code>is-divider-content</code> modifier to align content with the divider.
+      </p>
+
+      <p>
+        If the last step has no content, omit the <code>is-balanced</code> modifier on the root element to make sure the last step stays flush with the right edge.
+      </p>
+    </div>
+
+    {% capture steps_divider_content_example %}
+    <ul class="steps">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+        <div class="steps-content is-divider-content">
+          <p class="is-size-4">Action 1</p>
+        </div>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+        <div class="steps-content is-divider-content">
+          <p class="is-size-4">Action 2</p>
+        </div>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+        <div class="steps-content is-divider-content">
+          <p class="is-size-4">Action 3</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content is-divider-content">
+          <p class="is-size-4">Action 4</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_divider_content_example}}
+    </div>
+    {% highlight html %}
+    {{steps_divider_content_example}}
+    {% endhighlight %}
+
+    {% include heading.html name="Colors" %}
+
+    <div class="content">
+      <p>
+        Every marker can have a different color. This can be used to indicate steps with errors, for example.
+      </p>
+    </div>
+
+    {% capture steps_marker_colors1_example %}
+    <ul class="steps has-content-centered">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker is-white">1</span>
+        <div class="steps-content">
+          <code>is-white</code>
+        </div>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker is-light">2</span>
+        <div class="steps-content">
+          <code>is-light</code>
+        </div>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker is-dark">3</span>
+        <div class="steps-content">
+          <code>is-dark</code>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker is-black">4</span>
+        <div class="steps-content">
+          <code>is-black</code>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    {% capture steps_marker_colors2_example %}
+    <ul class="steps has-content-centered">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker is-primary">1</span>
+        <div class="steps-content">
+          <code>is-primary</code>
+        </div>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker is-info">2</span>
+        <div class="steps-content">
+          <code>is-info</code>
+        </div>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker is-success">3</span>
+        <div class="steps-content">
+          <code>is-success</code>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker is-warning">4</span>
+        <div class="steps-content">
+          <code>is-warning</code>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker is-danger">5</span>
+        <div class="steps-content">
+          <code>is-danger</code>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="example">
+          {{steps_marker_colors1_example}}
+        </div>
+        {% highlight html %}
+        {{steps_marker_colors1_example}}
+        {% endhighlight %}
+      </div>
+      <div class="column">
+        <div class="example">
+          {{steps_marker_colors2_example}}
+        </div>
+        {% highlight html %}
+        {{steps_marker_colors2_example}}
+        {% endhighlight %}
+      </div>
+    </div>
+
+    {% include heading.html name="Sizes" %}
+
+    <div class="content">
+      <p>
+        You can use the <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> modifiers to change the size.
+      </p>
+    </div>
+
+    {% capture steps_sizes_example %}
+    <ul class="steps is-small">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    <ul class="steps">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    <ul class="steps is-medium">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    <ul class="steps is-large">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    {% capture steps_sizes_short_example %}
+    <ul class="steps is-small">...</ul>
+    <ul class="steps">...</ul>
+    <ul class="steps is-medium">...</ul>
+    <ul class="steps is-large">...</ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_sizes_example}}
+    </div>
+    {% highlight html %}
+    {{steps_sizes_short_example}}
+    {% endhighlight %}
+
+    {% include heading.html name="Narrow" %}
+
+    <div class="content">
+      <p>
+        By default, the <code>steps</code> component will take up the entire width. Add the <code>is-narrow</code> modifier to only take up as much space as needed.
+      </p>
+
+      <p>
+        You can combine that with the <code>is-centered</code> or <code>is-right</code> modifiers to change the alignment.
+      </p>
+    </div>
+
+    {% capture steps_narrow_example %}
+    <ul class="steps is-narrow">
+      <li class="steps-segment is-completed">
+        <span href="#" class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+
+    <ul class="steps is-narrow is-centered">
+      <li class="steps-segment is-completed">
+        <span href="#" class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+
+    <ul class="steps is-narrow is-right">
+      <li class="steps-segment is-completed">
+        <span href="#" class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_narrow_example}}
+    </div>
+    {% highlight html %}
+    {{steps_narrow_example}}
+    {% endhighlight %}
+
+    {% include heading.html name="Divider Style" %}
+
+    <div class="content">
+      <p>
+        The divider can be styled using the <code>is-dashed</code> modifier. This can apply to all steps by defining it on the root <code>steps</code> element or for each step separately.
+      </p>
+    </div>
+
+    {% capture steps_dashed_example %}
+    <ul class="steps is-dashed">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    {% capture steps_dashed_mixed_example %}
+    <ul class="steps">
+      <li class="steps-segment is-completed">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active is-dashed">
+        <span class="steps-marker"></span>
+        <div class="steps-content is-divider-content">
+          <p class="heading">Next step unreachable until some action has been taken</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="columns">
+      <div class="column">
+        <h4 class="title">For all steps</h4>
+        <div class="example">
+          {{steps_dashed_example}}
+        </div>
+        {% highlight html %}
+        {{steps_dashed_example}}
+        {% endhighlight %}
+      </div>
+
+      <div class="column">
+        <h4 class="title">Per step</h4>
+        <div class="example">
+          {{steps_dashed_mixed_example}}
+        </div>
+        {% highlight html %}
+        {{steps_dashed_mixed_example}}
+        {% endhighlight %}
+      </div>
+    </div>
+
+    {% include heading.html name="Alignment" %}
+
+    <div class="content">
+      <p>
+        The steps are displayed vertically on mobile and horizontally on bigger sizes by default.
+      </p>
+
+      <p>
+        You can use the <code>is-horizontal</code> or <code>is-vertical</code> modifiers to always force the steps in a certain alignment no matter the screen size.
+      </p>
+    </div>
+
+    {% capture steps_horizontal_example %}
+    <ul class="steps is-horizontal">
+      <li class="steps-segment is-completed">
+        <span href="#" class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-completed">
+        <span href="#" class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    {% capture steps_vertical_example %}
+    <ul class="steps is-vertical">
+      <li class="steps-segment">
+        <span href="#" class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">2000</p>
+          <p>Lorem Ipsum Dolor Sit Amet</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span href="#" class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">2002</p>
+          <p>Maecenas Ultrices Aliquet Velit Vitae</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">2007</p>
+          <p>Aliquam Quis Scelerisque Mauris Nullam</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">2012</p>
+          <p>Etiam A Nunc Vitae Nunc</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-4">2017</p>
+          <p>In Sed Vehicula Est Vivamus</p>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <h4 class="title">Always horizontal</h4>
+    <div class="example">
+      {{steps_horizontal_example}}
+    </div>
+    {% highlight html %}
+    {{steps_horizontal_example}}
+    {% endhighlight %}
+
+    <h4 class="title">Always vertical</h4>
+
+    <div class="columns">
+      <div class="column">
+        {% highlight html %}
+        {{steps_vertical_example}}
+        {% endhighlight %}
+      </div>
+      <div class="column">
+        <div class="example">
+          {{steps_vertical_example}}
+        </div>
+      </div>
+    </div>
+
+    {% include heading.html name="Example" %}
+
+    <div class="content">
+      <p>
+        Putting things together, we can make a checkout form for a shopping website.
+      </p>
+    </div>
+
+    {% capture steps_checkout_example %}
+    <ul class="steps is-narrow is-medium is-centered has-content-centered">
+      <li class="steps-segment is-completed">
+        <a href="#" class="has-text-dark">
+          <span class="steps-marker">
+            <span class="icon">
+              <i class="fa fa-shopping-cart"></i>
+            </span>
+          </span>
+          <div class="steps-content">
+            <p class="heading">Shopping Cart</p>
+          </div>
+        </a>
+      </li>
+      <li class="steps-segment is-completed">
+        <a hef=#" class="has-text-dark">
+          <span class="steps-marker">
+            <span class="icon">
+              <i class="fa fa-user"></i>
+            </span>
+          </span>
+          <div class="steps-content">
+            <p class="heading">User Information</p>
+          </div>
+        </a>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker">
+          <span class="icon">
+            <i class="fa fa-usd"></i>
+          </span>
+        </span>
+        <div class="steps-content">
+          <p class="heading">Payment</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">
+          <span class="icon">
+            <i class="fa fa-check"></i>
+          </span>
+        </span>
+        <div class="steps-content">
+          <p class="heading">Confirmation</p>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_checkout_example}}
+    </div>
+    {% highlight html %}
+    {{steps_checkout_example}}
+    {% endhighlight %}
+
+    {% include variables.html %}
+  </div>
+</section>

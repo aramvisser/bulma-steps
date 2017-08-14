@@ -1,0 +1,211 @@
+$steps-default-color: $grey-lighter !default
+$steps-completed-color: $primary !default
+$steps-active-color: $primary !default
+$steps-horizontal-min-width: 10em !default
+$steps-vertical-min-height: 4em !default
+$steps-marker-size: 2 !default
+
+=steps-horizontal
+  +tablet
+    &:not(.is-vertical)
+      @content
+  &.is-horizontal
+    @content
+
+=steps-vertical
+  +mobile
+    &:not(.is-horizontal)
+      @content
+  &.is-vertical
+    @content
+
+.steps
+  +block
+
+  .steps-segment
+    position: relative
+    &:not(:last-child):after
+      // This will contain the horizontal or vertical divider
+      content: " "
+      display: block
+      position: absolute
+
+  +steps-vertical
+    .steps-segment
+      display: block
+      &:not(:last-child)
+        min-height: $steps-vertical-min-height
+
+  +steps-horizontal
+    display: flex
+    .steps-segment:not(:last-child)
+      flex-basis: 1rem
+      flex-grow: 1
+      flex-shrink: 1
+
+    &.is-narrow
+      .steps-segment
+        flex-grow: 0
+        &:not(:last-child)
+          min-width: $steps-horizontal-min-width
+    
+    &.is-narrow.is-centered
+      justify-content: center
+
+    &.is-narrow.is-right
+      justify-content: flex-end
+
+    &.has-content-centered
+      text-align: center
+
+    &.is-balanced, &.has-content-centered
+      .steps-segment:last-child
+        flex-basis: 1rem
+        flex-grow: 1
+        flex-shrink: 1
+
+    &.is-narrow.has-content-centered
+      .steps-segment:last-child
+        flex-grow: 0
+        min-width: $steps-horizontal-min-width
+
+    .steps-content.is-divider-content
+      text-align: center
+
+  // Marker style
+  .steps-marker
+    align-items: center
+    display: flex
+    background-color: $steps-default-color
+    border-radius: 50%
+    color: findColorInvert($steps-default-color)
+    font-weight: $weight-bold
+    justify-content: center
+
+
+// Use a mixin to define all ratios in the same spot
+=steps-size($size)
+  font-size: $size
+
+  .steps-marker
+    height: $size * $steps-marker-size
+    width: $size * $steps-marker-size
+
+  +steps-vertical
+    // Draw a vertical divider
+    .steps-segment:not(:last-child):after
+      bottom: 0
+      left: calc(#{$size * ($steps-marker-size / 2)} - (#{$size / 6}))
+      top: $size * $steps-marker-size
+      width: $size / 3
+
+    // Align the content with the marker
+    .steps-content
+      margin-left: calc(#{$size * $steps-marker-size / 2} + .5em)
+      margin-top: -$size * $steps-marker-size
+      padding-left: 1em
+      padding-bottom: 1em
+
+    .steps-content.is-divider-content
+      margin-top: 0
+      padding-bottom: 0
+
+    &.has-content-centered
+      .steps-content
+        padding-top: calc(#{$size * $steps-marker-size / 2} - .5em)
+
+  +steps-horizontal
+    // Draw a horizontal divider
+    .steps-segment:not(:last-child):after
+      height: $size / 3
+      left: $size * $steps-marker-size
+      right: 0
+      top: calc(#{$size * ($steps-marker-size / 2)} - (#{$size / 6}))
+
+    // Align the content with the marker
+    .steps-content
+      margin-left: $size * $steps-marker-size / 2
+      &:not(:last-child)
+        margin-right: -$size * $steps-marker-size / 2
+
+      &.is-divider-content
+        margin-right: -$size * $steps-marker-size / 2
+        padding-left: 2em
+        padding-right: 2em
+
+    &.has-content-centered
+      .steps-segment:not(:last-child):after
+        left: calc(50% + #{$size * $steps-marker-size / 2})
+        right: calc(-50% + #{$size * $steps-marker-size / 2})
+      .steps-marker
+        position: absolute
+        left: calc(50% - #{$size * $steps-marker-size / 2})
+      .steps-content
+        margin-top: $size * $steps-marker-size
+        margin-left: .5em 
+        margin-right: .5em
+        padding-top: .2em
+
+.steps
+  +steps-size($size-normal)
+
+.steps.is-small
+  +steps-size($size-small)
+
+.steps.is-medium
+  +steps-size($size-medium)
+
+.steps.is-large
+  +steps-size($size-large)
+
+
+// Colors
+.steps-segment
+  &:after
+    background-color: $steps-default-color
+
+  &.is-completed
+    .steps-marker
+      background-color: $steps-completed-color
+      color: findColorInvert($steps-completed-color)
+    &:after
+      background-color: $steps-completed-color
+
+  &.is-active
+    .steps-marker
+      background-color: $steps-active-color
+      color: findColorInvert($steps-active-color)
+    &:after
+      background-color: $steps-default-color
+
+.steps-segment .steps-marker
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+
+
+// Divider alternate styles
+=steps-divider-background($angle, $color, $size)
+  background: repeating-linear-gradient($angle, $color, $color $size, transparent $size, transparent #{$size * 2})
+.steps
+  +steps-vertical
+    &.is-dashed .steps-segment, .steps-segment.is-dashed
+      &:after
+        +steps-divider-background(0deg, $steps-default-color, 5px)
+
+    &.is-dashed .steps-segment.is-completed, .steps-segment.is-dashed.is-completed
+      &:after
+        +steps-divider-background(0deg, $steps-completed-color, 5px)
+
+  +steps-horizontal
+    &.is-dashed .steps-segment, .steps-segment.is-dashed
+      &:after
+        +steps-divider-background(90deg, $steps-default-color, 10px)
+
+    &.is-dashed .steps-segment.is-completed, .steps-segment.is-dashed.is-completed
+      &:after
+        +steps-divider-background(90deg, $steps-completed-color, 10px)
+

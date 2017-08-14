@@ -1,0 +1,7 @@
+fontawesome:   https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+
+exclude: [bulma/]
+includes_dir: bulma/docs/_includes
+
+sass:
+  sass_dir: /
