@@ -32,3 +32,8 @@ documentation by running Jekyll locally.
 - Open the documentation page on [http://localhost:4000](http://localhost:4000)
 - Make changes to the `bulma-steps.sass` file
 - Reload the documentation page to see your changes
+
+## Related Project
+
+There is another steps extensions for Bulma available from
+[Wikiki](https://github.com/Wikiki/bulma-steps). It even has the same name!
