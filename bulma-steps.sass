@@ -76,7 +76,6 @@ $steps-marker-size: 2 !default
   .steps-marker
     align-items: center
     display: flex
-    background-color: $steps-default-color
     border-radius: 50%
     color: findColorInvert($steps-default-color)
     font-weight: $weight-bold
@@ -162,21 +161,24 @@ $steps-marker-size: 2 !default
 // Colors
 .steps-segment
   &:after
-    background-color: $steps-default-color
-
-  &.is-completed
-    .steps-marker
-      background-color: $steps-completed-color
-      color: findColorInvert($steps-completed-color)
-    &:after
-      background-color: $steps-completed-color
+    background-color: $steps-completed-color
+  .steps-marker
+    background-color: $steps-completed-color
+    color: findColorInvert($steps-completed-color)
 
   &.is-active
+    &:after
+      background-color: $steps-default-color
     .steps-marker
       background-color: $steps-active-color
       color: findColorInvert($steps-active-color)
+
+  &.is-active ~ .steps-segment
     &:after
       background-color: $steps-default-color
+    .steps-marker
+      background-color: $steps-default-color
+      color: findColorInvert($steps-default-color)
 
 .steps-segment .steps-marker
   @each $name, $pair in $colors
@@ -194,18 +196,26 @@ $steps-marker-size: 2 !default
   +steps-vertical
     &.is-dashed .steps-segment, .steps-segment.is-dashed
       &:after
-        +steps-divider-background(0deg, $steps-default-color, 5px)
-
-    &.is-dashed .steps-segment.is-completed, .steps-segment.is-dashed.is-completed
-      &:after
         +steps-divider-background(0deg, $steps-completed-color, 5px)
 
-  +steps-horizontal
-    &.is-dashed .steps-segment, .steps-segment.is-dashed
+    &.is-dashed .steps-segment.is-active,
+    &.is-dashed .steps-segment.is-active ~ .steps-segment,
+    .steps-segment.is-active.is-dashed,
+    .steps-segment.is-active ~ .steps-segment.is-dashed
       &:after
-        +steps-divider-background(90deg, $steps-default-color, 10px)
+        +steps-divider-background(0deg, $steps-default-color, 5px)
 
-    &.is-dashed .steps-segment.is-completed, .steps-segment.is-dashed.is-completed
+  +steps-horizontal
+    &.is-dashed .steps-segment,
+    .steps-segment.is-dashed
       &:after
         +steps-divider-background(90deg, $steps-completed-color, 10px)
+
+    // the active segment and any subsequent segment get the default colot
+    &.is-dashed .steps-segment.is-active,
+    &.is-dashed .steps-segment.is-active ~ .steps-segment,
+    .steps-segment.is-active.is-dashed,
+    .steps-segment.is-active ~ .steps-segment.is-dashed
+      &:after
+        +steps-divider-background(90deg, $steps-default-color, 10px)
 

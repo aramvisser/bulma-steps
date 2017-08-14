@@ -39,16 +39,16 @@ variables:
       </p>
 
       <p>
-        You can use the <code>is-completed</code> and <code>is-active</code> modifiers on each step to indicate progress.
+        You can use the <code>is-active</code> modifier to set the current active step. Any step before or after the active step will be styled differently.
       </p>
     </div>
 
     {% capture steps_example %}
     <ul class="steps">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <a href="#" class="steps-marker"></a>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <a href="#" class="steps-marker"></a>
       </li>
       <li class="steps-segment is-active">
@@ -80,10 +80,10 @@ variables:
 
     {% capture steps_marker_content_example %}
     <ul class="steps">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker">1</span>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker">xyz</span>
       </li>
       <li class="steps-segment is-active">
@@ -123,14 +123,14 @@ variables:
 
     {% capture steps_content_example %}
     <ul class="steps is-balanced">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content">
           <p class="is-size-4">Step 1</p>
           <p>This is the first step, which means you start here.</p>
         </div>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content">
           <p class="is-size-4">Step 2</p>
@@ -180,14 +180,14 @@ variables:
 
     {% capture steps_centered_content_example %}
     <ul class="steps has-content-centered">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content">
           <p class="is-size-4">Step 1</p>
           <p>This is the first step, which means you start here.</p>
         </div>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content">
           <p class="is-size-4">Step 2</p>
@@ -237,13 +237,13 @@ variables:
 
     {% capture steps_divider_content_example %}
     <ul class="steps">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content is-divider-content">
           <p class="is-size-4">Action 1</p>
         </div>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
         <div class="steps-content is-divider-content">
           <p class="is-size-4">Action 2</p>
@@ -284,13 +284,13 @@ variables:
 
     {% capture steps_marker_colors1_example %}
     <ul class="steps has-content-centered">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker is-white">1</span>
         <div class="steps-content">
           <code>is-white</code>
         </div>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker is-light">2</span>
         <div class="steps-content">
           <code>is-light</code>
@@ -313,13 +313,13 @@ variables:
 
     {% capture steps_marker_colors2_example %}
     <ul class="steps has-content-centered">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker is-primary">1</span>
         <div class="steps-content">
           <code>is-primary</code>
         </div>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker is-info">2</span>
         <div class="steps-content">
           <code>is-info</code>
@@ -375,10 +375,10 @@ variables:
 
     {% capture steps_sizes_example %}
     <ul class="steps is-small">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -392,10 +392,10 @@ variables:
       </li>
     </ul>
     <ul class="steps">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -409,10 +409,10 @@ variables:
       </li>
     </ul>
     <ul class="steps is-medium">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -426,10 +426,10 @@ variables:
       </li>
     </ul>
     <ul class="steps is-large">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -472,7 +472,7 @@ variables:
 
     {% capture steps_narrow_example %}
     <ul class="steps is-narrow">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span href="#" class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -484,7 +484,7 @@ variables:
     </ul>
 
     <ul class="steps is-narrow is-centered">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span href="#" class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -496,7 +496,7 @@ variables:
     </ul>
 
     <ul class="steps is-narrow is-right">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span href="#" class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -525,7 +525,7 @@ variables:
 
     {% capture steps_dashed_example %}
     <ul class="steps is-dashed">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -539,7 +539,7 @@ variables:
 
     {% capture steps_dashed_mixed_example %}
     <ul class="steps">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active is-dashed">
@@ -590,10 +590,10 @@ variables:
 
     {% capture steps_horizontal_example %}
     <ul class="steps is-horizontal">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span href="#" class="steps-marker"></span>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <span href="#" class="steps-marker"></span>
       </li>
       <li class="steps-segment is-active">
@@ -681,7 +681,7 @@ variables:
 
     {% capture steps_checkout_example %}
     <ul class="steps is-narrow is-medium is-centered has-content-centered">
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <a href="#" class="has-text-dark">
           <span class="steps-marker">
             <span class="icon">
@@ -693,7 +693,7 @@ variables:
           </div>
         </a>
       </li>
-      <li class="steps-segment is-completed">
+      <li class="steps-segment">
         <a hef=#" class="has-text-dark">
           <span class="steps-marker">
             <span class="icon">
