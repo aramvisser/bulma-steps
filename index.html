@@ -15,6 +15,8 @@ variables:
   value: 2
 - name: $steps-gap-size
   value: .3rem
+- name: $steps-hollow-border-size
+  value: .3em
 ---
 
 <section class="section">
@@ -516,6 +518,65 @@ variables:
     {% highlight html %}
     {{steps_narrow_example}}
     {% endhighlight %}
+
+    {% include heading.html name="Marker Style" %}
+
+    <div class="content">
+      <p>
+        The marker can be styled using the <code>is-hollow</code> modifier. It can apply to all steps by defining it on the root <code>steps</code> element or each marker separately.
+      </p>
+    </div>
+
+    {% capture steps_hollow_example %}
+    <ul class="steps is-hollow">
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    {% capture steps_hollow_mixed_example %}
+    <ul class="steps">
+      <li class="steps-segment">
+        <span class="steps-marker is-hollow"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker is-hollow"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="columns">
+      <div class="column">
+        <h4 class="title">For all steps</h4>
+        <div class="example">
+          {{steps_hollow_example}}
+        </div>
+        {% highlight html %}
+        {{steps_hollow_example}}
+        {% endhighlight %}
+      </div>
+
+      <div class="column">
+        <h4 class="title">Per step</h4>
+        <div class="example">
+          {{steps_hollow_mixed_example}}
+        </div>
+        {% highlight html %}
+        {{steps_hollow_mixed_example}}
+        {% endhighlight %}
+      </div>
+    </div>
+
 
     {% include heading.html name="Divider Styles" %}
 

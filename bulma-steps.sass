@@ -5,6 +5,7 @@ $steps-horizontal-min-width: 10em !default
 $steps-vertical-min-height: 4em !default
 $steps-marker-size: 2 !default
 $steps-gap-size: .3rem !default
+$steps-hollow-border-size: .3em !default
 
 =steps-horizontal
   +tablet
@@ -78,7 +79,6 @@ $steps-gap-size: .3rem !default
     align-items: center
     display: flex
     border-radius: 50%
-    color: findColorInvert($steps-default-color)
     font-weight: $weight-bold
     justify-content: center
 
@@ -175,35 +175,61 @@ $steps-gap-size: .3rem !default
   +steps-size($size-large)
 
 
-// Colors
+// Divider Default Colors
 .steps-segment
   &:after
     background-color: $steps-completed-color
-  .steps-marker
-    background-color: $steps-completed-color
-    color: findColorInvert($steps-completed-color)
 
   &.is-active
     &:after
       background-color: $steps-default-color
-    .steps-marker
-      background-color: $steps-active-color
-      color: findColorInvert($steps-active-color)
 
   &.is-active ~ .steps-segment
     &:after
       background-color: $steps-default-color
-    .steps-marker
+
+// Marker Default Colors
+.steps:not(.is-hollow)
+  .steps-marker:not(.is-hollow)
+    background-color: $steps-completed-color
+    color: findColorInvert($steps-completed-color)
+
+  .steps-segment.is-active
+    .steps-marker:not(.is-hollow)
+      background-color: $steps-active-color
+      color: findColorInvert($steps-active-color)
+
+  .steps-segment.is-active
+    & ~ .steps-segment .steps-marker:not(.is-hollow)
       background-color: $steps-default-color
       color: findColorInvert($steps-default-color)
 
-.steps-segment .steps-marker
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+// Hollow style
+.steps.is-hollow .steps-marker,
+.steps-marker.is-hollow
+  border: $steps-hollow-border-size solid $steps-completed-color
+
+.steps.is-hollow .is-active .steps-marker,
+.steps .is-active .steps-marker.is-hollow,
+  border-color: $steps-active-color
+
+.steps.is-hollow .steps-segment.is-active ~ .steps-segment .steps-marker,
+.steps-segment.is-active ~ .steps-segment .steps-marker.is-hollow
+  border-color: $steps-default-color
+
+// Override marker color per step
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  $color-invert: nth($pair, 2)
+  .steps:not(.is-hollow) .steps-marker:not(.is-hollow)
     &.is-#{$name}
-      background-color: $color
-      color: $color-invert
+      background-color: $color !important
+      color: $color-invert !important
+
+  .steps.is-hollow .steps-marker,
+  .steps .steps-marker.is-hollow
+    &.is-#{$name}
+      border-color: $color !important
 
 
 // Divider dashed style
