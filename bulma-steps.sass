@@ -4,6 +4,7 @@ $steps-active-color: $primary !default
 $steps-horizontal-min-width: 10em !default
 $steps-vertical-min-height: 4em !default
 $steps-marker-size: 2 !default
+$steps-divider-size: .4em !default
 $steps-gap-size: .3rem !default
 $steps-hollow-border-size: .3em !default
 
@@ -95,9 +96,9 @@ $steps-hollow-border-size: .3em !default
     // Draw a vertical divider
     .steps-segment:not(:last-child):after
       bottom: 0
-      left: calc(#{$size * ($steps-marker-size / 2)} - (#{$size / 6}))
+      left: calc(#{$size * ($steps-marker-size / 2)} - (#{$steps-divider-size / 2}))
       top: $size * $steps-marker-size
-      width: $size / 3
+      width: $steps-divider-size
 
     // Align the content with the marker
     .steps-content
@@ -122,10 +123,10 @@ $steps-hollow-border-size: .3em !default
   +steps-horizontal
     // Draw a horizontal divider
     .steps-segment:not(:last-child):after
-      height: $size / 3
+      height: $steps-divider-size
       left: $size * $steps-marker-size
       right: 0
-      top: calc(#{$size * ($steps-marker-size / 2)} - (#{$size / 6}))
+      top: calc(#{$size * ($steps-marker-size / 2)} - (#{$steps-divider-size / 2}))
 
     // Align the content with the marker
     .steps-content
