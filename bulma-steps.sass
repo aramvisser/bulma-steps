@@ -22,6 +22,18 @@ $steps-hollow-border-size: .3em !default
   &.is-vertical
     @content
 
+=steps-all-segments
+  &.steps .steps-segment
+    @content
+
+=steps-active-segment
+  &.steps .steps-segment.is-active
+    @content
+
+=steps-inactive-segments
+  &.steps .steps-segment.is-active ~ .steps-segment
+    @content
+
 .steps
   +block
 

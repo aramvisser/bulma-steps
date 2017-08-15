@@ -856,6 +856,90 @@ variables:
     {{steps_checkout_example}}
     {% endhighlight %}
 
+    {% include heading.html name="SASS Mixin Helpers" %}
+
+    <div class="content">
+      <p>
+        There are a few helpers available to make it easy to directly target step segments if you
+        want to create custom step styles. They are <code>steps-all-segments</code>,
+        <code>steps-inactive-segments</code> and <code>steps-active-segment</code>.
+      </p>
+
+      <p>
+        For example, if you create a <code>my-step-style</code> class in a .sass file like this:
+      </p>
+    </div>
+
+    {% highlight sass %}
+      // in a .sass file
+      .my-step-style
+        +steps-active-segment
+          .steps-content
+            font-weight: bold
+
+        +steps-inactive-segments
+          .steps-content
+            color: $grey-lighter
+    {% endhighlight %}
+
+    <div class="content">
+      <p>
+        Then using the <code>my-step-style</code> class on the root steps element will add the
+        custom styles.
+      </p>
+    </div>
+
+    {% capture steps_custom_example %}
+    <ul class="steps my-step-style has-content-centered">
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-5">Step 1</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-5">Step 2</p>
+        </div>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-5">Step 3</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-5">Step 4</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+        <div class="steps-content">
+          <p class="is-size-5">Step 5</p>
+        </div>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_custom_example}}
+    </div>
+    {% highlight html %}
+    {{steps_custom_example}}
+    {% endhighlight %}
+
+    <div class="content">
+      <p>
+        There is no <code>steps-completed-segments</code> mixin available, due to the way the code
+        is structured (and css3 limitations). If you want to target those, use the
+        <code>steps-all-segments</code> mixin to set that style and override it with the
+        <code>steps-active-segment</code> and <code>steps-inactive-segments</code> mixins.
+      </p>
+    </div>
+
     {% include variables.html %}
   </div>
 </section>

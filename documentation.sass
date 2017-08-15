@@ -6,3 +6,12 @@
 
 .hero .example
   background-color: white
+
+.my-step-style
+  +steps-active-segment
+    .steps-content
+      font-weight: bold
+
+  +steps-inactive-segments
+    .steps-content
+      color: $grey-lighter
