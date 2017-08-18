@@ -94,6 +94,9 @@ $steps-hollow-border-size: .3em !default
     border-radius: 50%
     font-weight: $weight-bold
     justify-content: center
+    // Position & z-index are needed to put it above the divider
+    position: relative
+    z-index: 10
 
 
 // Use a mixin to define all ratios in the same spot
@@ -107,9 +110,10 @@ $steps-hollow-border-size: .3em !default
   +steps-vertical
     // Draw a vertical divider
     .steps-segment:not(:last-child):after
-      bottom: 0
+      // top and bottom position is almost touching the inner side of a hollow border marker
+      bottom: -$steps-gap-size * 0.8
       left: calc(#{$size * ($steps-marker-size / 2)} - (#{$steps-divider-size / 2}))
-      top: $size * $steps-marker-size
+      top: ($size * $steps-marker-size) - ($steps-gap-size * 0.8)
       width: $steps-divider-size
 
     // Align the content with the marker
@@ -136,8 +140,9 @@ $steps-hollow-border-size: .3em !default
     // Draw a horizontal divider
     .steps-segment:not(:last-child):after
       height: $steps-divider-size
-      left: $size * $steps-marker-size
-      right: 0
+      // top and bottom position is almost touching the inner side of a hollow border marker
+      left: ($size * $steps-marker-size) - ($steps-gap-size * 0.8)
+      right: -$steps-gap-size * 0.8
       top: calc(#{$size * ($steps-marker-size / 2)} - (#{$steps-divider-size / 2}))
 
     // Align the content with the marker
@@ -153,8 +158,8 @@ $steps-hollow-border-size: .3em !default
 
     &.has-content-centered
       .steps-segment:not(:last-child):after
-        left: calc(50% + #{$size * $steps-marker-size / 2})
-        right: calc(-50% + #{$size * $steps-marker-size / 2})
+        left: 50%
+        right: -50%
       .steps-marker
         position: absolute
         left: calc(50% - #{$size * $steps-marker-size / 2})
