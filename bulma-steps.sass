@@ -7,6 +7,8 @@ $steps-marker-size: 2 !default
 $steps-divider-size: .4em !default
 $steps-gap-size: .3rem !default
 $steps-hollow-border-size: .3em !default
+$steps-thin-divider-size: 1px !default
+$steps-thin-marker-size: .8em !default
 
 =steps-horizontal
   +tablet
@@ -131,10 +133,11 @@ $steps-hollow-border-size: .3em !default
       .steps-content
         padding-top: calc(#{$size * $steps-marker-size / 2} - .5em)
 
-    &.has-gaps .steps-segment, .steps-segment.has-gaps
-      &:not(:last-child):after
-        top: ($size * $steps-marker-size) + $steps-gap-size
-        bottom:  $steps-gap-size
+    &:not(.is-thin)
+      &.has-gaps .steps-segment, .steps-segment.has-gaps
+        &:not(:last-child):after
+          top: ($size * $steps-marker-size) + $steps-gap-size
+          bottom:  $steps-gap-size
 
   +steps-horizontal
     // Draw a horizontal divider
@@ -169,16 +172,17 @@ $steps-hollow-border-size: .3em !default
         margin-right: .5em
         padding-top: .2em
 
-    &.has-gaps .steps-segment, .steps-segment.has-gaps
-      &:not(:last-child):after
-        left: ($size * $steps-marker-size) + $steps-gap-size
-        right:  $steps-gap-size
-
-    &.has-content-centered
+    &:not(.is-thin)
       &.has-gaps .steps-segment, .steps-segment.has-gaps
         &:not(:last-child):after
-          left: calc(50% + #{($size * $steps-marker-size / 2) + $steps-gap-size})
-          right: calc(-50% + #{($size * $steps-marker-size / 2) + $steps-gap-size})
+          left: ($size * $steps-marker-size) + $steps-gap-size
+          right:  $steps-gap-size
+
+      &.has-content-centered
+        &.has-gaps .steps-segment, .steps-segment.has-gaps
+          &:not(:last-child):after
+            left: calc(50% + #{($size * $steps-marker-size / 2) + $steps-gap-size})
+            right: calc(-50% + #{($size * $steps-marker-size / 2) + $steps-gap-size})
 
 .steps
   +steps-size($size-normal)
@@ -279,4 +283,67 @@ $steps-hollow-border-size: .3em !default
     .steps-segment.is-active ~ .steps-segment.is-dashed
       &:after
         +steps-divider-background(90deg, $steps-default-color, 10px)
+
+// Thin modifier
+.steps.is-thin
+  .steps-marker
+    width: $steps-thin-marker-size
+    height: $steps-thin-marker-size
+  &.is-hollow,
+  .steps-marker.is-hollow
+    border-width: $steps-thin-divider-size
+    height: calc($steps-thin-marker-size + $steps-thin-divider-size)
+    width: calc($steps-thin-marker-size + $steps-thin-divider-size)
+
+  +steps-vertical
+    .steps-segment
+      &:not(:last-child):after
+        bottom: 0
+        left: calc(#{$steps-thin-marker-size / 2} - #{$steps-thin-divider-size / 2})
+        top: $steps-thin-marker-size
+        width: $steps-thin-divider-size
+
+    .steps-content
+      margin-top: -$steps-thin-marker-size * 1.5
+      margin-left: $steps-thin-marker-size
+
+    &.has-gaps .steps-segment, .steps-segment.has-gaps
+      &:not(:last-child):after
+        bottom: $steps-thin-marker-size / 2
+        top: $steps-thin-marker-size * 1.5
+
+    &.has-content-centered
+      .steps-content
+        padding-top: $steps-thin-marker-size * 2
+
+  +steps-horizontal
+    .steps-segment
+      &:not(:last-child):after
+        left: $steps-thin-marker-size
+        right: 0
+        top: calc(#{$steps-thin-marker-size / 2} - #{$steps-thin-divider-size / 2})
+        height: $steps-thin-divider-size
+
+    .steps-content
+      margin-top: $steps-thin-marker-size
+
+    &.has-content-centered
+      .steps-segment
+        &:not(:last-child):after
+          left: calc(50% + #{$steps-thin-marker-size / 2})
+          right: calc(-50% + #{$steps-thin-marker-size / 2})
+      .steps-marker
+        position: absolute
+        left: calc(50% - #{$steps-thin-marker-size / 2})
+
+    &.has-gaps .steps-segment, .steps-segment.has-gaps
+      &:not(:last-child):after
+        left: $steps-thin-marker-size * 1.5
+        right: $steps-thin-marker-size / 2
+
+    &.has-content-centered.has-gaps .steps-segment, &.has-content-centered .steps-segment.has-gaps
+      &:not(:last-child):after
+        left: calc(50% + #{($steps-thin-marker-size / 2) + ($steps-thin-marker-size / 2)})
+        right: calc(-50% + #{($steps-thin-marker-size / 2) + ($steps-thin-marker-size / 2)})
+
 

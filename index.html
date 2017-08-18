@@ -19,6 +19,10 @@ variables:
   value: .3rem
 - name: $steps-hollow-border-size
   value: .3em
+- name: $steps-thin-divider-size
+  value: 1px
+- name: $steps-thin-marker-size
+  value: .8em
 ---
 
 <section class="section">
@@ -462,6 +466,41 @@ variables:
     </div>
     {% highlight html %}
     {{steps_sizes_short_example}}
+    {% endhighlight %}
+
+    <div class="content">
+      <p>
+        Or if you want to go really small, use the <code>is-thin</code> modifier to have 1px wide
+        dividers. The markers will also be made smaller, so you can't put anything inside them
+        anymore.
+      </p>
+    </div>
+
+    {% capture steps_thin_example %}
+    <ul class="steps is-thin">
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment is-active">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker"></span>
+      </li>
+    </ul>
+    {% endcapture %}
+
+    <div class="example">
+      {{steps_thin_example}}
+    </div>
+    {% highlight html %}
+    {{steps_thin_example}}
     {% endhighlight %}
 
     {% include heading.html name="Narrow" %}
