@@ -1,0 +1,27 @@
+{
+  "name": "bulma-steps",
+  "version": "1.0.0",
+  "description": "Steps component for bulma.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aramvisser/bulma-steps"
+  },
+  "keywords": [
+    "Bulma",
+    "bulma",
+    "bulma.io",
+    "extensions",
+    "steps",
+    "wizard"
+  ],
+  "author": "aramvisser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aramvisser/bulma-steps/issues"
+  },
+  "homepage": "https://aramvisser.github.io/bulma-steps"
+}
