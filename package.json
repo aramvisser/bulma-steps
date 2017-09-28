@@ -1,6 +1,6 @@
 {
-  "name": "bulma-steps",
-  "version": "1.0.0",
+  "name": "bulma-steps-component",
+  "version": "0.5.3",
   "description": "Steps component for bulma.io",
   "main": "index.js",
   "scripts": {

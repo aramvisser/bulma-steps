@@ -10,9 +10,15 @@ track progress in multi step forms or wizards.
 [Usage & Examples](https://aramvisser.github.io/bulma-steps)
 
 I'm trying to keep this working with the latest available Bulma version. Currently tracking: **bulma
-v0.5.1**. Other versions _should_ work, but no promises.
+v0.5.3**. Other versions _should_ work, but no promises.
 
 ## Installation
+
+### NPM
+
+`npm install bulma-steps-component`
+
+### Manually
 
 There is no .css file available, only a .sass file. Make sure you are using the SASS version of
 Bulma in your current workflow
