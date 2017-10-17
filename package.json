@@ -2,7 +2,7 @@
   "name": "bulma-steps-component",
   "version": "0.5.3",
   "description": "Steps component for bulma.io",
-  "main": "index.js",
+  "main": "bulma-steps.sass",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
