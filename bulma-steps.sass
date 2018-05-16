@@ -65,7 +65,7 @@ $steps-thin-marker-size: .8em !default
         flex-grow: 0
         &:not(:last-child)
           min-width: $steps-horizontal-min-width
-    
+
     &.is-narrow.is-centered
       justify-content: center
 
@@ -168,7 +168,7 @@ $steps-thin-marker-size: .8em !default
         left: calc(50% - #{$size * $steps-marker-size / 2})
       .steps-content
         margin-top: $size * $steps-marker-size
-        margin-left: .5em 
+        margin-left: .5em
         margin-right: .5em
         padding-top: .2em
 
@@ -348,7 +348,7 @@ $steps-thin-marker-size: .8em !default
 
 
 //.has-content-above
-.steps:not(:is-vertical).has-content-above
+.steps:not(.is-vertical).has-content-above
   .steps-segment
     display: flex
     flex-direction: column-reverse
