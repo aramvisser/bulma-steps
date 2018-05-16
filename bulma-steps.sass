@@ -347,3 +347,22 @@ $steps-thin-marker-size: .8em !default
         right: calc(-50% + #{($steps-thin-marker-size / 2) + ($steps-thin-marker-size / 2)})
 
 
+//.has-content-above
+.steps:not(:is-vertical).has-content-above
+  .steps-segment
+    display: flex
+    flex-direction: column-reverse
+
+    .steps-content
+      margin-top: 0 !important
+      padding-top: 0 !important
+      display: flex
+      flex-direction: column-reverse
+
+    &:not(:last-child):after
+      bottom: calc(1rem - (.2em))
+      top: auto
+
+  &.has-content-centered .steps-content
+    margin-bottom: 2rem
+    padding-bottom: .2em
