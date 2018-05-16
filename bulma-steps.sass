@@ -360,9 +360,10 @@ $steps-thin-marker-size: .8em !default
       flex-direction: column-reverse
 
     &:not(:last-child):after
-      bottom: calc(1rem - (.2em))
+      bottom:
+      bottom: calc(#{$steps-thin-marker-size / 2} - #{$steps-thin-divider-size / 2})
       top: auto
 
   &.has-content-centered .steps-content
-    margin-bottom: 2rem
+    margin-bottom: $size * $steps-marker-size
     padding-bottom: .2em
