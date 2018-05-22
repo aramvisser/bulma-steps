@@ -108,7 +108,8 @@ $steps-thin-marker-size: .8em !default
   .steps-marker
     height: $size * $steps-marker-size
     width: $size * $steps-marker-size
-
+    overflow: hidden
+    
   +steps-vertical
     // Draw a vertical divider
     .steps-segment:not(:last-child):after
