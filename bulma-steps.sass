@@ -1,6 +1,6 @@
 $steps-default-color: $grey-lighter !default
-$steps-completed-color: $primary !default
-$steps-active-color: $primary !default
+$steps-completed-color: $success !default
+$steps-active-color: $success !default
 $steps-horizontal-min-width: 10em !default
 $steps-vertical-min-height: 4em !default
 $steps-marker-size: 2 !default
@@ -98,7 +98,7 @@ $steps-thin-marker-size: .8em !default
     justify-content: center
     // Position & z-index are needed to put it above the divider
     position: relative
-    z-index: 10
+    z-index: 5
 
 
 // Use a mixin to define all ratios in the same spot
@@ -152,6 +152,7 @@ $steps-thin-marker-size: .8em !default
     // Align the content with the marker
     .steps-content
       margin-left: $size * $steps-marker-size / 2
+      line-height: 1em
       &:not(:last-child)
         margin-right: -$size * $steps-marker-size / 2
 
