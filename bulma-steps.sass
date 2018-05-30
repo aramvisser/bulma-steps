@@ -173,6 +173,11 @@ $steps-thin-marker-size: .8em !default
         margin-left: .5em
         margin-right: .5em
         padding-top: .2em
+      
+    &.has-content-above .steps-content
+      margin-bottom: $size * $steps-marker-size
+      padding-bottom: .2em
+
 
     &:not(.is-thin)
       &.has-gaps .steps-segment, .steps-segment.has-gaps
@@ -364,7 +369,3 @@ $steps-thin-marker-size: .8em !default
     &:not(:last-child):after
       bottom: calc(#{$steps-thin-marker-size / 2} - #{$steps-thin-divider-size / 2})
       top: auto
-
-  &.has-content-centered .steps-content
-    margin-bottom: $size * $steps-marker-size
-    padding-bottom: .2em
