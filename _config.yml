@@ -5,5 +5,3 @@ includes_dir: bulma/docs/_includes
 
 sass:
   sass_dir: /
-
-theme: jekyll-theme-slate
