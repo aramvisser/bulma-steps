@@ -1,6 +1,6 @@
 $steps-default-color: $grey-lighter !default
-$steps-completed-color: $primary !default
-$steps-active-color: $primary !default
+$steps-completed-color: $success !default
+$steps-active-color: $success !default
 $steps-horizontal-min-width: 10em !default
 $steps-vertical-min-height: 4em !default
 $steps-marker-size: 2 !default
@@ -65,7 +65,7 @@ $steps-thin-marker-size: .8em !default
         flex-grow: 0
         &:not(:last-child)
           min-width: $steps-horizontal-min-width
-    
+
     &.is-narrow.is-centered
       justify-content: center
 
@@ -98,7 +98,7 @@ $steps-thin-marker-size: .8em !default
     justify-content: center
     // Position & z-index are needed to put it above the divider
     position: relative
-    z-index: 10
+    z-index: 5
 
 
 // Use a mixin to define all ratios in the same spot
@@ -108,7 +108,8 @@ $steps-thin-marker-size: .8em !default
   .steps-marker
     height: $size * $steps-marker-size
     width: $size * $steps-marker-size
-
+    overflow: hidden
+    
   +steps-vertical
     // Draw a vertical divider
     .steps-segment:not(:last-child):after
@@ -151,6 +152,7 @@ $steps-thin-marker-size: .8em !default
     // Align the content with the marker
     .steps-content
       margin-left: $size * $steps-marker-size / 2
+      line-height: 1em
       &:not(:last-child)
         margin-right: -$size * $steps-marker-size / 2
 
@@ -168,9 +170,14 @@ $steps-thin-marker-size: .8em !default
         left: calc(50% - #{$size * $steps-marker-size / 2})
       .steps-content
         margin-top: $size * $steps-marker-size
-        margin-left: .5em 
+        margin-left: .5em
         margin-right: .5em
         padding-top: .2em
+      
+    &.has-content-above .steps-content
+      margin-bottom: $size * $steps-marker-size
+      padding-bottom: .2em
+
 
     &:not(.is-thin)
       &.has-gaps .steps-segment, .steps-segment.has-gaps
@@ -347,3 +354,18 @@ $steps-thin-marker-size: .8em !default
         right: calc(-50% + #{($steps-thin-marker-size / 2) + ($steps-thin-marker-size / 2)})
 
 
+//.has-content-above
+.steps:not(.is-vertical).has-content-above
+  .steps-segment
+    display: flex
+    flex-direction: column-reverse
+
+    .steps-content
+      margin-top: 0
+      padding-top: 0
+      display: flex
+      flex-direction: column-reverse
+
+    &:not(:last-child):after
+      bottom: calc(#{$steps-thin-marker-size / 2} - #{$steps-thin-divider-size / 2})
+      top: auto

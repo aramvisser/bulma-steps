@@ -1,14 +1,14 @@
 {
-  "name": "bulma-steps-component",
-  "version": "0.5.3",
-  "description": "Steps component for bulma.io",
+  "name": "bulma-o-steps",
+  "version": "0.5.5",
+  "description": "In-depth Steps component for Bulma.io",
   "main": "bulma-steps.sass",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aramvisser/bulma-steps"
+    "url": "git+https://github.com/octoshrimpy/bulma-o-steps"
   },
   "keywords": [
     "Bulma",
@@ -18,10 +18,10 @@
     "steps",
     "wizard"
   ],
-  "author": "aramvisser",
+  "author": "aramvisser, octoshrimpy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aramvisser/bulma-steps/issues"
+    "url": "https://github.com/octoshrimpy/bulma-o-steps/issues"
   },
-  "homepage": "https://aramvisser.github.io/bulma-steps"
+  "homepage": "https://octoshrimpy.github.io/bulma-o-steps"
 }
